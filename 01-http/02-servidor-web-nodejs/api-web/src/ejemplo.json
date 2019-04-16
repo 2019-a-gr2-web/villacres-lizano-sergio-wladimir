@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Sergio",
+    "key": "valor",
+    "edad": 25,
+    "sueldo": 10.21,
+    "casado": false,
+    "hijos": null,
+    "mascotas": [
+      "cachetes",
+      10,
+      10.2,
+      false,
+      null,
+      {
+        "nombre": "cachetes"
+      }
+    ]
+  }
+]
