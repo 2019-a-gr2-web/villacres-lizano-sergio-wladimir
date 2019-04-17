@@ -1,4 +1,4 @@
-import {Controller, Delete, Get, Post, Put,Headers} from '@nestjs/common';
+import {Controller, Delete,Request, Get, Post, Put, Headers, Query, Param, Body,Response} from '@nestjs/common';
 import { AppService } from './app.service';
 //@Controller(SegmentoInicial)
 @Controller('/api')
@@ -31,6 +31,9 @@ export class AppController {
 
     return 'OK';
   }
+
+
+
   @Post('/hola-mundo') // metodo http post
   holaMundo(){
     return "Hola mundo";
@@ -43,55 +46,66 @@ export class AppController {
   helloWalt(){
     return "Hello Welt";
   }
-}
-/*
-@nombreDecorador()//Decorador -> funcion
-class usuario {
-  @Atributo()
-  atributoPublico;
-  private atributoPrivado;
-  protected atributoProtected;
+  @Get('/ciudad/:idCiudad')
+  ciudad(@Param() parametrosRuta){
 
-  constructor(@parametro()atributoPublico,
-              @parametro()atributoPrivado,
-              @parametro()atributoProtegido){
-    this.atributoPublico = atributoPublico;
-    this.atributoPrivado=atributoPrivado;
-    this.atributoProtected = atributoProtegido;
+    switch (parametrosRuta.idCiudad.toLowerCase()) {
+      case 'quito':
+        return 'Que fueff';
+      case 'guayaquil':
+        return 'Que maah ñañoshh';
+      default :
+        return 'Buenas Tardes';
+
+    }
+    return "ok"
   }
-  @MetodoA()
-  public metodoPublico(@ParametroA() a){}
-}*/
+  @Get('/consultar')
+  consultar(@Query() queryParams){
+    console.log(queryParams);
+    if(queryParams.nombre=='sergio'){
+      return 'Hola ${queryParams.nombre}'
+    }else{
+      return 'Hola extraño'
+    }
+  }
+  @Post('/saludar')
+  saludar(@Body() cuerpo){
+    console.log(cuerpo);
+  }
 
-const json = [
-  {
-    "nombre": "Sergio",
-    "key": "valor",
-    "edad": 25,
-    "sueldo": 10.21,
-    "casado": false,
-    "hijos": null,
-    "mascotas": [
-      "cachetes",
-      10,
-      10.2,
-      false,
-      null,
-      {
-        "nombre": "cachetes"
+  @Post('/registroComida')
+  registroComida(
+      @Body() parametrosCuerpo,
+      @Response() response
+      //@Request() request
+  ){
+    if(parametrosCuerpo.nombre && parametrosCuerpo.cantidad){
+      //return 'Registro creado';
+      const cantidad=Number(parametrosCuerpo.cantidad);
+      if(cantidad>1){
+        response.set('Premio','Fanesca');
       }
-    ]
+
+      return response.send({mensaje:'Registro Creado'});
+    }else {
+      //return 'ERROR, no envía nombre o cantidad';
+      return  response.status(400)
+          .send({
+            mensaje: 'ERROR, no envia nombre o cantidad',
+            error:400
+          });
+    }
   }
-];
+  @Get('/semilla')
+  semilla(@Request() request){
+    console.log((request.cookies));
+    const cookis = request.cookies;
+    if(cookis.micookie){
+      return ':)'
+    }else{
+      return ":("
+    }
+  }
 
-let objeto:any = {
-  "propiedad":"valor",
-  "propiedad1":"valor1"
-};
-
-objeto.propiedad3 ='valor3';
-objeto['propiedadTres']='valor3';
-delete objeto.propiedad3;//destruir
-objeto.propiedad3 =undefined;//destruir
-objeto.propiedad //valor
-objeto.propiedad1 //valor1
+}
