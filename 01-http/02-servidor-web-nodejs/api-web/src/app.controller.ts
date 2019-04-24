@@ -1,6 +1,7 @@
 import {Controller, Delete,Request, Get, Post, Put, Headers, Query, Param, Body,Response} from '@nestjs/common';
 import { AppService } from './app.service';
 import * as Joi from '@hapi/joi';
+import bodyParser = require('body-parser');
 //@Controller(SegmentoInicial)
 @Controller('/api')
 export class AppController {
@@ -151,6 +152,23 @@ export class AppController {
             return response.send(':(');
         }
 
+    }
+
+    @Get('/setNombre')
+    setNombre(@Query() query,@Request() request){
+      if(!isNaN(query.numero1) && !isNaN(query.numero2)){
+        const resultado = Number(query.numero1) - Number(query.numero2);
+        console.log("Resultado de la resta es: "+resultado);
+        const cookies = request.cookies; 
+        const respuesta = {
+          'nombreDeUsuario': cookies.nombre,
+          'resultado': resultado
+        }
+        return respuesta;
+      }
+      else{
+        return 'Error';
+      }
     }
 
 
