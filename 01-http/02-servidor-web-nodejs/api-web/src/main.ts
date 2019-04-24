@@ -5,6 +5,8 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule);
   app.use(cookieParcer());
-  await app.listen(3001);
+  //@ts-ignore
+  app.set('view engine','ejs');
+  await app.listen(3000);
 }
 bootstrap();
