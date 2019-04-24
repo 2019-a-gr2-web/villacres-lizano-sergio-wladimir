@@ -2,6 +2,7 @@ import {Controller, Delete,Request, Get, Post, Put, Headers, Query, Param, Body,
 import { AppService } from './app.service';
 import * as Joi from '@hapi/joi';
 import bodyParser = require('body-parser');
+import { response } from 'express';
 //@Controller(SegmentoInicial)
 @Controller('/api')
 export class AppController {
@@ -155,19 +156,19 @@ export class AppController {
     }
 
     @Get('/setNombre')
-    setNombre(@Query() query,@Request() request){
+    setNombre(@Query() query,@Response() response){
       if(!isNaN(query.numero1) && !isNaN(query.numero2)){
         const resultado = Number(query.numero1) - Number(query.numero2);
         console.log("Resultado de la resta es: "+resultado);
-        const cookies = request.cookies; 
+        response.cookie('nombreUsuario',query.nombre);
         const respuesta = {
-          'nombreDeUsuario': cookies.nombre,
+          'nombreDeUsuario': query.nombre,
           'resultado': resultado
         }
-        return respuesta;
+        return response.send(respuesta);
       }
       else{
-        return 'Error';
+        return response.send('Error');
       }
     }
 
