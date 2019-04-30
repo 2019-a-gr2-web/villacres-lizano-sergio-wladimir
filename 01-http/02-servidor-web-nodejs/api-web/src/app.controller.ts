@@ -172,5 +172,127 @@ export class AppController {
       }
     }
 
+    @Get('/inicio')
+    inicio(
+      @Response() res
+    ){
+      return res.render('inicio.ejs');
+    }
 
 }
+function holaMundo() {
+  console.log('Hola mundo'); 
+ }
+ const respuestaholaMundo = holaMundo();
+ console.log('Resp hola mundo: ',respuestaholaMundo);
+ function suma(a:number,b:number):number{
+   return a+b;
+ }
+ const respuestaSuma = suma(2,2);
+ console.log('Resp suma: ',respuestaSuma);
+//Condicionales
+//Truty ->true
+//Folsy ->false
+
+if(true) // Truty
+{
+  console.log('Verdadero');
+}else{
+  console.log('False');
+}
+
+if(false) // Folsy
+{
+  console.log('Verdadero');
+}else{
+  console.log('False');
+}
+
+if("") // Folsy
+{
+  console.log('Verdadero ""');
+}else{
+  console.log('False ""');
+}
+if("a") // Truty
+{
+  console.log('Verdadero "a"');
+}else{
+  console.log('False "a"');
+}
+
+if(0) // Folsy
+{
+  console.log('Verdadero 0');
+}else{
+  console.log('False 0');
+}
+
+if("0") // Truty
+{
+  console.log('Verdadero "0"');
+}else{
+  console.log('False "0"');
+}
+
+if(-1) // Truty
+{
+  console.log('Verdadero -1');
+}else{
+  console.log('False -1');
+}
+if(1) // Truty
+{
+  console.log('Verdadero 1');
+}else{
+  console.log('False 1');
+}
+
+if(undefined) // Folsy
+{
+  console.log('Verdadero undef');
+}else{
+  console.log('False undef');
+}
+
+if({}) // Truty
+{
+  console.log('Verdadero');
+}else{
+  console.log('False');
+}
+const arreglo = [1,'A',true,null,{},[]];
+const arregloNumero = [1,2,3,4,5,6,7,8];
+
+//1) Impriman en consola todos los elementos
+const arregloNumeroForEach = [1,2,3,4,5,6,7,8];
+const rForEach = arregloNumeroForEach.forEach(n=>console.log(`${n}`));
+console.log(`RESPUESTA FOREACH ${rForEach}`);
+//2) Sumen 2 a los pares y 1 a los impares
+const arregloNumerosMap = [1,2,3,4,5,6,7,8];
+const rMap = arregloNumerosMap
+    .map(
+      (valorActual)=>{
+        const esPar = valorActual%2==0;
+        if(esPar){
+          return valorActual+2;
+        }
+        else{
+          return valorActual+1;
+        }
+         
+      }
+    );
+console.log( `RESPUESTA MAP: ${rMap}`);
+//3) Encuentren si hay el numero 4
+
+
+//4) Filtren los numeros menores a 5
+//5) Todos los valor es menor que 2
+//6) Algun valor es menor a 2
+//7) Sumen todos los valores
+//8) Resten todos los valores de 100
+
+//1.1) Sumen 10 a todos
+//1.2) Filtren a los mayores a 15
+//1.3) Si hay 
