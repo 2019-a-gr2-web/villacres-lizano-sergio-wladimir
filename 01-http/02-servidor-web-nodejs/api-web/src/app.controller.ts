@@ -336,13 +336,44 @@ const valorDondEmpiezaCalculo = 0;
 const reduce = arregloNumerosReduce
                   .reduce(
                     (acumulado,valorActual)=>{
-                      return acumulado + valorActual;
-                    }
+                      if(valorActual<4){
+                        return acumulado + valorActual*1.1+5;
+                      }else{
+                        return acumulado + valorActual*1.15+3;
+                      }
+                      
+                    },valorDondEmpiezaCalculo
                   )
 console.log(`Respuesta REDUCE: ${reduce} `)
 
 //8) Resten todos los valores de 100
+const arregloNumerosReduceResta = [1, 2, 3, 4, 5, 6];
+const valorDondEmpiezaCalculoResta = 100;
+const reduceResta = arregloNumerosReduce
+                  .reduce(
+                    (acumulado,valorActual)=>{
+                      return acumulado - valorActual;
+                    },valorDondEmpiezaCalculoResta
+                  )
+console.log(`Respuesta REDUCE: ${reduceResta} `)
+
+
+
 
 //1.1) Sumen 10 a todos
+const arregloEjercicio = [1, 2, 3, 4, 5, 6];
+ arregloEjercicio
+                    .map((valorActual)=>{
+                        return valorActual +10;
+                    })
+                    .filter((valorActual)=>{
+                      return valorActual>15;
+                    }
+                    )
+                    .some((valorActual)=>{
+                      return valorActual > 30;
+                    })
+
+
 //1.2) Filtren a los mayores a 15
 //1.3) Si hay 
