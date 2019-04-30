@@ -71,6 +71,10 @@ export class AppController {
         'nombreUsuario':cookie.nombreUsuario,
         'resultado':resultado
       }
+      const resto = cookieSeg.puntos - resultado;
+      cookieSeg.puntos = resto;
+      console.log(cookieSeg.puntos);
+      respuesta.cookie('puntos',resto,{signed:true})
       return respuesta.status(201).send(resultadoJson);
     }
     else{
@@ -97,6 +101,10 @@ export class AppController {
         'nombreUsuario':cookie.nombreUsuario,
         'resultado':resultado
       }
+      const resto = cookieSeg.puntos - resultado;
+      cookieSeg.puntos = resto;
+      console.log(cookieSeg.puntos);
+      respuesta.cookie('puntos',resto,{signed:true})
       return respuesta.status(202).send(resultadoJson);
     }
     else{
@@ -122,6 +130,10 @@ export class AppController {
         'nombreUsuario':cookie.nombreUsuario,
         'resultado':resultado
       }
+      const resto = cookieSeg.puntos - resultado;
+      cookieSeg.puntos = resto;
+      console.log(cookieSeg.puntos);
+      respuesta.cookie('puntos',resto,{signed:true})
       return respuesta.status(203).send(resultadoJson)
     }
     else if(isNaN(body.numero) && !isNaN(query.numero) && header.numero!=null){
@@ -130,6 +142,10 @@ export class AppController {
         'nombreUsuario':cookie.nombreUsuario,
         'resultado':resultado
       }
+      const resto = cookieSeg.puntos - resultado;
+      cookieSeg.puntos = resto;
+      console.log(cookieSeg.puntos);
+      respuesta.cookie('puntos',resto,{signed:true})
       return respuesta.status(203).send(resultadoJson)
     }
     else if(header.numero==null && !isNaN(query.numero) && !isNaN(body.numero)){
@@ -138,6 +154,10 @@ export class AppController {
         'nombreUsuario':cookie.nombreUsuario,
         'resultado':resultado
       }
+      const resto = cookieSeg.puntos - resultado;
+      cookieSeg.puntos = resto;
+      console.log(cookieSeg.puntos);
+      respuesta.cookie('puntos',resto,{signed:true})
       return respuesta.status(203).send(resultadoJson)
     }
     else{
