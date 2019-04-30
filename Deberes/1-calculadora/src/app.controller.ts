@@ -6,13 +6,44 @@ import { response } from 'express';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get('setNombre')
+    setNombre(@Request() request, @Response() response, @Query() query,) {
+        const usuario = query.nombreUsuario;
+        if (usuario) {
+            response.cookie('nombreUsuario',usuario).cookie('puntos',100,{signed: true}).send("Listo");
+        } else {
+            response.send('Ingrese su nombre');
+        }
+    }
+
+
+
   @Get('/suma')
-  suma(@Headers() header,@Response() respuesta) {
-    
+  suma(@Headers() header,@Response() respuesta,@Request() req) {
+    const cookie = req.cookies;
+    const cookieSeg = req.signedCookies;
+    if(!cookieSeg.puntos){
+      respuesta.cookie('puntos',100,{signed:true});
+    }
+    if(!cookie.nombreUsuario) {
+      respuesta.cookie('nombreUsuario', 'Sergio');
+    }
+    if(cookieSeg.puntos <= 0){
+      respuesta.send("Se termino los puntos");
+    }
     if(header.numero1!=null && header.numero2!=null){
       const resultado = Number(header.numero1) + Number(header.numero2);
       console.log("Resultado de la suma es: "+resultado);
-      return respuesta.status(200).send('La respuesta es: '+resultado);
+      const resultadoJson = {
+        'nombreUsuario':cookie.nombreUsuario,
+        'resultado':resultado
+      }
+      const resto = cookieSeg.puntos - resultado;
+      cookieSeg.puntos = resto;
+      console.log(cookieSeg.puntos);
+      respuesta.cookie('puntos',resto,{signed:true})
+      
+      return respuesta.status(200).send(resultadoJson);
     }
     else{
       return respuesta.status(400).send('Error de parametros');

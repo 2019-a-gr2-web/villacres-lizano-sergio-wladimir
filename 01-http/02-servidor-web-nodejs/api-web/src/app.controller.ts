@@ -285,6 +285,8 @@ const rMap = arregloNumerosMap
     );
 console.log( `RESPUESTA MAP: ${rMap}`);
 //3) Encuentren si hay el numero 4
+
+
 //4) Filtren los numeros menores a 5
 //5) Todos los valor es menor que 2
 //6) Algun valor es menor a 2
