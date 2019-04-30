@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import * as Joi from '@hapi/joi';
 import bodyParser = require('body-parser');
 import { response } from 'express';
+import { callbackify } from 'util';
 //@Controller(SegmentoInicial)
 @Controller('/api')
 export class AppController {
@@ -285,12 +286,61 @@ const rMap = arregloNumerosMap
     );
 console.log( `RESPUESTA MAP: ${rMap}`);
 //3) Encuentren si hay el numero 4
+const arregloNumerosFind = [1, 2, 3, 4, 5, 6];
 
+const rFind = arregloNumerosFind
+    .find( // CONDICION para devolver ese ELEMENTO
+        (valorActual)=>{
+            return valorActual == 4;
+        }
+    );
+console.log(`Respuesta FIND: ${rFind}`);
 
 //4) Filtren los numeros menores a 5
-//5) Todos los valor es menor que 2
+const arregloNumerosFilter = [1, 2, 3, 4, 5, 6];
+
+const rFilter = arregloNumerosFilter
+    .filter(  // CONDICION TRUE  -> Agrega al arreglo
+        //       CONDICION FALSA -> Se omite del arreglo
+        (valorActual)=>{
+            return valorActual < 5;
+        }
+    );
+console.log(`Respuesta FILTER: ${rFilter}`);
+
+//5) Todos los valor positivos
+const arregloNumerosEvery = [1, 2, 3, 4, 5, 6];
+const every = arregloNumerosEvery
+              .every(
+                (valorActual)=>{
+                  return valorActual > 0
+                }
+              )
+
+console.log(`Respuesta EVERY: ${every}`);
 //6) Algun valor es menor a 2
+const arregloNumerosSome = [1, 2, 3, 4, 5, 6];
+
+const some = arregloNumerosSome
+                .some(
+                  (valorActual)=>{
+                    return valorActual < 2
+                  }
+                )
+console.log(`Respuesta SOME: ${some} `)
+
 //7) Sumen todos los valores
+const arregloNumerosReduce = [1, 2, 3, 4, 5, 6];
+const valorDondEmpiezaCalculo = 0;
+
+const reduce = arregloNumerosReduce
+                  .reduce(
+                    (acumulado,valorActual)=>{
+                      return acumulado + valorActual;
+                    }
+                  )
+console.log(`Respuesta REDUCE: ${reduce} `)
+
 //8) Resten todos los valores de 100
 
 //1.1) Sumen 10 a todos

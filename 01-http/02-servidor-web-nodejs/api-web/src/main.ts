@@ -7,6 +7,6 @@ async function bootstrap() {
   app.use(cookieParcer());
   //@ts-ignore
   app.set('view engine','ejs');
-  await app.listen(3001);
+  await app.listen(3000);
 }
 bootstrap();
