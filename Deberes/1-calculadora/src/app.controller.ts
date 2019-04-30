@@ -51,40 +51,94 @@ export class AppController {
     
   }
   @Post('/resta')
-  resta(@Body() body,@Response() respuesta){
+  resta(@Body() body,@Response() respuesta,@Request() req){
+
+    const cookie = req.cookies;
+    const cookieSeg = req.signedCookies;
+    if(!cookieSeg.puntos){
+      respuesta.cookie('puntos',100,{signed:true});
+    }
+    if(!cookie.nombreUsuario) {
+      respuesta.cookie('nombreUsuario', 'Sergio');
+    }
+    if(cookieSeg.puntos <= 0){
+      respuesta.send("Se termino los puntos");
+    }
     if(!isNaN(body.numero1) && !isNaN(body.numero2)){
       const resultado = Number(body.numero1) - Number(body.numero2);
       console.log("Resultado de la resta es: "+resultado);
-      return respuesta.status(201).send('La respuesta es: '+resultado);
+      const resultadoJson = {
+        'nombreUsuario':cookie.nombreUsuario,
+        'resultado':resultado
+      }
+      return respuesta.status(201).send(resultadoJson);
     }
     else{
       return respuesta.status(401).send('Error de parametros');
     }
   }
   @Put('/producto')
-  producto(@Query() query,@Response() respuesta){
+  producto(@Query() query,@Response() respuesta,@Request() req){
+    const cookie = req.cookies;
+    const cookieSeg = req.signedCookies;
+    if(!cookieSeg.puntos){
+      respuesta.cookie('puntos',100,{signed:true});
+    }
+    if(!cookie.nombreUsuario) {
+      respuesta.cookie('nombreUsuario', 'Sergio');
+    }
+    if(cookieSeg.puntos <= 0){
+      respuesta.send("Se termino los puntos");
+    }
     if(!isNaN(query.numero1) && !isNaN(query.numero2)){
       const resultado = Number(query.numero1) * Number(query.numero2);
       console.log("Resultado de la multiplicacion es: "+resultado);
-      return respuesta.status(202).send('La respuesta es: '+resultado);
+      const resultadoJson = {
+        'nombreUsuario':cookie.nombreUsuario,
+        'resultado':resultado
+      }
+      return respuesta.status(202).send(resultadoJson);
     }
     else{
       return respuesta.status(402).send('Error de parametros');
     }
   }
   @Delete('/division')
-  division(@Query() query, @Body() body,@Headers() header,@Response() respuesta){
+  division(@Query() query, @Body() body,@Headers() header,@Response() respuesta,@Request() req){
+    const cookie = req.cookies;
+    const cookieSeg = req.signedCookies;
+    if(!cookieSeg.puntos){
+      respuesta.cookie('puntos',100,{signed:true});
+    }
+    if(!cookie.nombreUsuario) {
+      respuesta.cookie('nombreUsuario', 'Sergio');
+    }
+    if(cookieSeg.puntos <= 0){
+      respuesta.send("Se termino los puntos");
+    }
     if(isNaN(query.numero) && !isNaN(body.numero) && header.numero!=null){
       const resultado = Number(body.numero)/Number(header.numero);
-      return respuesta.status(203).send('La respuesta es: '+ resultado)
+      const resultadoJson = {
+        'nombreUsuario':cookie.nombreUsuario,
+        'resultado':resultado
+      }
+      return respuesta.status(203).send(resultadoJson)
     }
     else if(isNaN(body.numero) && !isNaN(query.numero) && header.numero!=null){
       const resultado = Number(query.numero)/Number(header.numero);
-      return respuesta.status(203).send('La respuesta es: '+ resultado)
+      const resultadoJson = {
+        'nombreUsuario':cookie.nombreUsuario,
+        'resultado':resultado
+      }
+      return respuesta.status(203).send(resultadoJson)
     }
     else if(header.numero==null && !isNaN(query.numero) && !isNaN(body.numero)){
       const resultado = Number(query.numero)/Number(body.numero);
-      return respuesta.status(203).send('La respuesta es: '+ resultado)
+      const resultadoJson = {
+        'nombreUsuario':cookie.nombreUsuario,
+        'resultado':resultado
+      }
+      return respuesta.status(203).send(resultadoJson)
     }
     else{
       return respuesta.status(403).send('error')
