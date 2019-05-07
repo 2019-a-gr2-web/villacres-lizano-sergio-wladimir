@@ -173,11 +173,21 @@ export class AppController {
       }
     }
 
-    @Get('/inicio')
+    @Get('/inicio')//endpoint
     inicio(
       @Response() res
     ){
-      return res.render('inicio.ejs');
+      return res.render('inicio.ejs',{
+        estaVivo:false
+      });
+    }
+    @Get('/peliculas')//endpoint
+    peliculas(
+      @Response() res
+    ){
+      return res.render('peliculas/inicio.ejs',{
+        estaVivo:false
+      });
     }
 
 }
