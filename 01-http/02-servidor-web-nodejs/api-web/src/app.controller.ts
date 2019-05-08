@@ -189,6 +189,14 @@ export class AppController {
         estaVivo:false
       });
     }
+    @Get('/estilos')//endpoint
+    estilos(
+      @Response() res
+    ){
+      return res.render('peliculas/estilos.ejs',{
+        estaVivo:false
+      });
+    }
 
 }
 function holaMundo() {
