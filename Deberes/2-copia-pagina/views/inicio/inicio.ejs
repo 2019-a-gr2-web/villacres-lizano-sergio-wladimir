@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mercado Libre</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #fff159
+        }
+        .titulo{
+            background-color: #fff159;
+        }
+        .logo{
+            margin: 6px;
+            padding: 10px;
+            background-color: #fff159;
+        }
+        .buscador{
+            margin-left: 20px;
+            margin-right: 6px;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            padding: 3px;
+            width: 100%;
+        }
+        .boton_barra{
+            background-color: #fff159;
+            color: black;
+            width: 100%;
+            border-color: #fff159;
+        }
+        .portada{
+            width: 100%;
+        }
+        .categorias{
+            background-color: #ebebeb;
+            width: 100%;
+            border-color: #ebebeb;
+            border-style: solid;
+            border-width: 130px;
+            padding-left: 15%;
+        }
+        .item_categoria{
+            height: 180px;
+            width: 180px;
+            background-color: #ffff;
+            border-width: 2px;
+            border-style: solid;
+        }
+        .historial{
+            background-color: #ebebeb;
+            padding-left: 400px;
+        }
+        .pie{
+            background-color: #ffff;
+        }
+        .item_pie{
+            padding-left: 200px;
+            padding-right: 200px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .separador{
+            margin-top: 50px;
+        }
+        .pie_inferior{
+            background-color: #ebebeb;
+            height: 40px;
+        }
+        .copyright{
+            font-size: 10px;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="" >
+        <div class="row titulo">
+            <div class="col-lg-3 col-md-3">
+                <img class="logo" src="http://localhost:3000/MercadoLibre_logo.png" height="50" >
+            </div>
+            <div class="col-lg-5 col-md-5">
+                    <input class="buscador" placeholder="Buscar productos, marcas y mas...">
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <img class="logo" src="https://http2.mlstatic.com/resources/deals/exhibitors_resources/mec-menu-desktop-notification-picture-f577cbd2-bdaa-44b1-a369-73fe35aa3ff2.png" title="Descarga la app de Mercado Libre" height="60">
+            </div>
+        </div>
+        <div class="row titulo">
+            <div class="col-lg-3">
+                <button type="button" class="btn boton_barra">Categorias</button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn ">Historial</button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn ">Vender</button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn ">Ayuda</button>
+            </div>
+            <div class="col-lg-3">
+                <h1></h1>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn ">Crea tu cuenta</button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn ">Ingresa</button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn ">Compras</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="portada" src="http://localhost:3000/portada.webp">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 categorias">
+                <h2>Categorias populares</h2>
+                <div class="row">
+                    <div class="column my-auto">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/1.png" height="70" width="70"><br>Accesorios para Veiculos</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/2.png" height="70" width="70"><br>Animales y Mascotas</button>
+                    </div>
+                    <div class="column  ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/3.png" height="70" width="70"><br>Autos,Motos y Otros</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/4.png" height="70" width="70"><br>Celulares y Telefonia</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/5.png" height="70" width="70"><br>Computacion</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/6.png" height="70" width="70"><br>Camaras y Accesorios</button>
+                    </div>
+                    <div class="column  ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/7.png" height="70" width="70"><br>Electronica, Audio y Video</button>
+                    </div>
+               </div>
+                <div class="row">
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/8.png" height="70" width="70"><br>Bebés</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/9.png" height="70" width="70"><br>Arte y Antiguedades</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/10.png" height="70" width="70"><br>Coleccionables</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/11.png" height="70" width="70"><br>Consolas y Videojuegos</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/12.png" height="70" width="70"><br>Deportes y Fitness</button>
+                    </div>
+                    <div class="column ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/13.png" height="70" width="70"><br>Hogar y Muebles</button>
+                    </div>
+                    <div class="column  ">
+                        <button type="button" class="btn item_categoria"><img src="http://localhost:3000/icons/14.png" height="70" width="70"><br>Alimentos y Bebidas</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row historial">
+            <div class="col-lg-12">
+                <h2>Tu Historial</h2>
+                <div class="row">
+                        <div class="column">
+                            <img src="http://localhost:3000/a.webp">
+                        </div>
+                        <div class="column">
+                            <img src="http://localhost:3000/b.webp">
+                        </div>
+                        <div class="column">
+                            <img src="http://localhost:3000/c.webp">                            </div>
+                        <div class="column">
+                            <img src="http://localhost:3000/d.webp">
+                        </div>
+                        <div class="column">
+                            <img src="http://localhost:3000/e.webp">
+                        </div>
+                </div>
+                <div class="separador">
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="row pie">
+            <div class="col-lg-4 item_pie">
+                <img src="http://localhost:3000/icons/imagen1.png">
+                <h3>Compra sin moverte</h3>
+                <p>Encuentra lo que necesitas, y coordina el pago y la entrega con el vendedor. Es fácil y rápido. ¡Todos podemos hacerlo!</p>
+            </div>
+            <div class="col-lg-4 item_pie">
+                <img src="http://localhost:3000/icons/imagen2.png">
+                <h3>Recibe tu producto</h3>
+                <p>Acuerda la entrega de tu compra con el vendedor. Puedes recibirlo en tu casa, en la oficina o retirarlo. ¡Tú decides qué prefieres!</p>
+            </div>
+            <div class="col-lg-4 item_pie">
+                <img src="http://localhost:3000/icons/imagen3.png">
+                <h3>Vende 100% gratis</h3>
+                <p>Piensa qué te gustaría vender, publícalo y gana dinero sin gastar ni un centavo. Tendrás publicaciones gratuitas ilimitadas para todo tipo de productos. ¡Anímate!</p>
+            </div>
+        </div>
+        <div class="row pie_inferior">
+                <div class="col-lg-1">
+                    <a>Terminos y condiciones</a>
+                </div>
+                <div class="col-lg-1">
+                    <a>Politicas y privacidad</a>
+                </div>
+                <div class="col-lg-1">
+                    <a>Ayuda</a>
+                </div>
+                <div class="col-lg-6">
+                    <h3></h3>
+                </div>
+                <div class="col-lg-3">
+                    <img class="logo" src="https://http2.mlstatic.com/resources/deals/exhibitors_resources/mec-menu-desktop-notification-picture-f577cbd2-bdaa-44b1-a369-73fe35aa3ff2.png" title="Descarga la app de Mercado Libre" height="60">
+                </div>
+        </div>
+            <div class="row pie_inferior">
+                <a class="copyright">Copyright © 1999-2019 MercadoLibre Ecuador Cia. Ltda.</a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
