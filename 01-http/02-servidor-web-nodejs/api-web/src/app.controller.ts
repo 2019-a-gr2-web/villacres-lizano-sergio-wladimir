@@ -7,8 +7,9 @@ import { callbackify } from 'util';
 //@Controller(SegmentoInicial)
 @Controller('/api')
 export class AppController {
+  const usuarios=[];
   constructor(private readonly appService: AppService) {}
-
+  
   @Get('/hello-world') // metodo http get
   helloWorld(): string {
     return "Hello World";
