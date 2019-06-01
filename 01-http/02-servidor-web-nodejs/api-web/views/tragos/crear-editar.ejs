@@ -1,0 +1,52 @@
+<h1>Formulario de creacion</h1>
+<p>Crea un nuevo trago.</p>
+<form 
+    action="/api/traguito/crear"
+    method="POST"
+>
+    <label for="nombreId">Nombre</label>
+    <input id="nombreId" name="nombre" type="text">
+    <br>
+    <label for="tipoId">Tipo</label>
+    <select id="tipoId" name="tipo">
+        <option value="Ron">Roncito</option>
+        <option value="Vodka">Vodkita</option>
+        <option value="Tequila">Tequilita</option>
+        <option value="Whiskey" selected>Whiskitito</option>
+        <option value="Puntas">Puntitas</option>
+        <option value="Cerveza">Cervecita</option>
+    </select>
+    <!-- <button type="reset">Reset</button>
+    <button type="submit">Sumit</button> -->
+    
+    
+    <br>
+    <label for="gradosId">Grados de alcohol</label>
+    <input 
+    id="gradosId" 
+    name="gradosAlcohol" 
+    type="number"
+    min="0"
+    max="30"
+    step="0.1"
+    >
+    <br>
+    <label for="fechaCaducidadId">Fecha Caducidad</label>
+    <input type="date" id="fechaCaducidadId" name="fechaCaducidad">
+    <br>
+    <label for="precioId">Precio</label>
+    <input 
+    id="precioId" 
+    name="precio" 
+    type="number"
+    min="0"
+    max="30"
+    step="0.1"
+    >
+    <br>
+    <button type="submit">Guardar tragito</button>
+    <button type="button">Button</button>
+    <br>
+    
+    <br>
+</form>
