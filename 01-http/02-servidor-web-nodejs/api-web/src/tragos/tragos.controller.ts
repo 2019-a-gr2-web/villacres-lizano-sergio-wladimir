@@ -5,7 +5,6 @@ import { Trago } from "./interfases/trago";
 @Controller('/api/traguito')
 export class TragosController{
     constructor(private readonly _tragosService:TragosService){
-
     }
     @Get('lista')
     listarTragos(
