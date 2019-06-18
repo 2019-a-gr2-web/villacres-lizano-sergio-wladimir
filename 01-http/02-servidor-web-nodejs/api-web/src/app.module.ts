@@ -4,18 +4,25 @@ import { AppService } from './app.service';
 import { TragosModule } from './tragos/tragos.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TragosEntity } from './tragos/tragos.entity';
+import { DistribuidorModule } from './distribuidor/distribuidor.module';
+import { DistribuidorEntity } from './distribuidor/distribuidor.emtity';
+import { FiestaModule } from './fiesta/fiesta.module';
+import { FiestaEntity } from './fiesta/fiesta.emtity';
 
 @Module({
   
-  imports: [TragosModule,TypeOrmModule.forRoot({
+  imports: [TragosModule,DistribuidorModule,FiestaModule,TypeOrmModule.forRoot({
     name:'default', //nombre por defecto de TYPEORM
     type: 'mysql',
     host: 'localhost',
     port: 3306,
     username: 'root',
     password: '',
-    database: 'bdtest',
-    entities: [TragosEntity],
+    database: 'test',
+    entities: [TragosEntity,
+    DistribuidorEntity,
+    FiestaEntity
+  ],
     synchronize: true,
   })],
   controllers: [AppController],
