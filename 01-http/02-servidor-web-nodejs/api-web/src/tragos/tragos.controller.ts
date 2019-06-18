@@ -1,16 +1,17 @@
 import { Controller, Get, Res, Post, Body } from "@nestjs/common";
 import { TragosService } from "./tragos.service";
 import { Trago } from "./interfases/trago";
+import { async } from "rxjs/internal/scheduler/async";
 
 @Controller('/api/traguito')
 export class TragosController{
     constructor(private readonly _tragosService:TragosService){
     }
     @Get('lista')
-    listarTragos(
+    async listarTragos(
         @Res() res
     ){
-        const arregloTragos = this._tragosService.bddTragos;
+        const arregloTragos = await this._tragosService.buscar();
         res.render('tragos/lista-tragos',{
             arregloTragos:arregloTragos
         })

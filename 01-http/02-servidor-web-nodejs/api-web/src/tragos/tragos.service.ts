@@ -11,11 +11,19 @@ export class TragosService {
     bddTragos:Trago[] = [];
     recnum = 1;
 
-    crear(nuevoTrago:Trago):Trago{
-        nuevoTrago.id = this.recnum;
-        this.bddTragos.push(nuevoTrago);
-        this.recnum++;
-        return nuevoTrago;
+    crear(nuevoTrago: Trago):Promise<Trago> {
+        // nuevoTrago.id = this.recnum;
+        // this.recnum++;
+        // this.bddTragos.push(nuevoTrago);
+        // return nuevoTrago;
+
+        const objetoEntidad = this._tragosRepository
+                                    .create(nuevoTrago);
+
+        return this._tragosRepository.save(objetoEntidad);
+    }
+    buscar(parametrosBusqueda?):Promise<Trago[]>{
+        return this._tragosRepository.find(parametrosBusqueda);
     }
     buscarPorId(id:number):Trago {
         return this.bddTragos.find(
