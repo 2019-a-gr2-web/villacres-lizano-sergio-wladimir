@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websockets</title>
+</head>
+<body>
+    <!--<script src="socket.io.js"></script>-->
+    <script src="/WebSockets/socket.io.js"></script>
+    <script>
+        const url = 'http://localhost:3001/websockets';
+        const socket=io(url);
+        console.log('Ya mismmito nos conectamos :D')
+        socket.on(
+            'connect',//nombre del evento
+            ()=>{
+                console.log('Estamos conectados!!')
+            }
+            );
+
+        function peticionHolaMundo(){
+            socket.emit(
+                'holaMundo',
+                {
+                    nombre:'Sergio'
+                }
+            )
+        }
+
+
+
+        
+    </script>
+</body>
+</html>
