@@ -24,7 +24,6 @@ export class TragosController{
        res.render('tragos/crear-editar',{
         })
     }
-
     @Post('crear')
     crearTragoPost(
         @Body() trago:Trago,
