@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Websockets</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <!--<script src="socket.io.js"></script>-->
@@ -18,18 +19,81 @@
             }
             );
 
-        function peticionHolaMundo(){
+        function peticionHolaMundo(texto){
             socket.emit(
                 'holaMundo',
                 {
-                    nombre:'Sergio'
+                    nombre:'Sergio',
+                    mensaje:texto
                 }
             )
         }
+        socket.on(
+        'saludaron',
+        (data) => {
+            const idContenedor="contenedorChat";
+            const nombreEtiqueta = 'p';
+            const parrafo = document
+            .createElement(nombreEtiqueta);
+            const HTMLParrafo = `
+            <div class="alert alert-secondary" role="alert">
+                ${data.nombre}
+            </div>
+            `;
+            parrafo.innerHTML=HTMLParrafo;
+            aniadirEtiqueta(idContenedor,parrafo);
+
+
+        }
+    );
 
 
 
         
+    </script>
+
+    <h1 id='titulo'>Chat</h1>
+    <p class="par">Parr 1</p>
+    <p class="par">Parr 2</p>
+    <div id='contenedorChat'>
+
+    </div>
+    <label for="chat-text">Texto</label>
+    <input id="chat-text" type="text">
+
+    <button onclick="enviarMensaje()"> Añadir chat</button>
+    <script>
+        const titulo = document.getElementById('titulo');
+        titulo.style.backgroundColor = 'green';
+        titulo.onclick=()=>{
+            console.log('Diste click al titulo :(');
+        };
+        function clickParrafo(){
+            alert('CUIDADO!!');
+        }
+        
+        function enviarMensaje(){
+            const chat=document.getElementById('chat-text');
+            const texto=chat.value;
+            const idContenedor = 'contenedorChat';
+            const nombreEtiquetaElemento = "p";
+            const parrafo = document
+            .createElement(nombreEtiquetaElemento);
+            const contenidoHTML = `
+            <div class="alert alert-primary text-right" role="alert">
+                ${texto}
+            </div>
+            `;
+            parrafo.innerHTML=contenidoHTML;
+            aniadirEtiqueta(idContenedor,parrafo);
+            peticionHolaMundo(texto);
+        }
+        function aniadirEtiqueta(idEtiqueta,elementoHTML){
+            const etiqueta = document.getElementById(idEtiqueta);
+            etiqueta.appendChild(elementoHTML);
+        }
+
+
     </script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formato</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div id="imp1">
+        <div class="container">
+            <div class="row">
+                <div class="col-6" style="background-color: #6FFF00">
+                    <label for="name">Nombre</label>
+                </div>
+                <div class="col-6">
+                    <label for="age">Edad</label>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <button type="button" onclick="javascript:imprim1(imp1);">Imprimir</button>
+
+<script>
+function imprim1(imp1){
+var printContents = document.getElementById('imp1').innerHTML;
+        w = window.open();
+        w.document.write(printContents);
+        w.document.close(); // necessary for IE >= 10
+        w.focus(); // necessary for IE >= 10
+		w.print();
+		w.close();
+        return true;}
+</script>
+</body>
+</html>
